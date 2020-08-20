@@ -51,7 +51,8 @@ VhdsSubscription::VhdsSubscription(
 }
 
 void VhdsSubscription::updateOnDemand(const std::string& with_route_config_name_prefix) {
-  subscription_->updateResourceInterest({with_route_config_name_prefix});
+  interested_names_.emplace(with_route_config_name_prefix);
+  subscription_->updateResourceInterest(interested_names_);
 }
 
 void VhdsSubscription::onConfigUpdateFailed(Envoy::Config::ConfigUpdateFailureReason reason,

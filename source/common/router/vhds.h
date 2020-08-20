@@ -75,6 +75,7 @@ private:
   Envoy::Config::SubscriptionPtr subscription_;
   Init::TargetImpl init_target_;
   absl::node_hash_set<RouteConfigProvider*>& route_config_providers_;
+  std::set<std::string> interested_names_;
 };
 
 using VhdsSubscriptionPtr = std::unique_ptr<VhdsSubscription>;
